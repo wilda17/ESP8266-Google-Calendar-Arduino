@@ -18,6 +18,8 @@ const char *GScriptId = "gscriptid"; //replace with you gscript id
 //Connection Settings
 const char* host = "script.google.com";
 const char* googleRedirHost = "script.googleusercontent.com";
+const char* hostFingerprint = "googleFingerprint"; //replace with fingerprint for host
+const char* googleRedirHostFingerprint = "redirectFingerprint"; // replace with the fingerprint for the redirected host
 const int httpsPort = 443;
 
 //Fetch Google Calendar events
@@ -136,6 +138,7 @@ void connectToWifi() {
 //Get calendar entries from google
 void fetchDataFromGoogle() {
   HTTPSRedirect client(httpsPort);
+  client.setFingerprint(hostFingerprint);
   if (!client.connected())
     client.connect(host, httpsPort);
 
