@@ -105,6 +105,8 @@ String HTTPSRedirect::getData(const char* url, const char* host, const char* red
   DPRINTLN("Connecting to:");
   DPRINTLN(redirHost);
 
+
+  setFingerprint(redirFingerprint);
   if (!connect(redirHost, httpsPort)) {
     Serial.println("Connection to re-directed host failed!");
     return "error";
